@@ -1,14 +1,15 @@
 {
-  "name": "@pancakeswap/pancake-swap-lib",
+  "name": "@easybake/easybake-swap-lib",
   "version": "0.0.4",
-  "description": "Pancake Swap Lib",
+  "author": "Chef Eco",
+  "description": "Easybake Swap Lib",
   "files": [
     "contracts",
     "!contracts/test"
   ],
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com:pancakeswap/pancake-swap-lib.git"
+    "url": "ssh://git@github.com:easybakeswap/easybake-swap-lib.git"
   },
   "publishConfig": {
     "registry": "http://registry.npmjs.org"
