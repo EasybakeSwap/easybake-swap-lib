@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-
-pragma solidity >=0.5.0;
+pragma solidity >=0.5.0 <0.8.0;
 
 import './AddressStringUtil.sol';
 
-// produces token descriptors from inconsistent or absent BEP20 symbol implementations that can return string or bytes32
+// produces token descriptors from inconsistent or absent ERC20 symbol implementations that can return string or bytes32
 // this library will always produce a string symbol to represent the token
-library SafeBEP20Namer {
+library SafeERC20Namer {
     function bytes32ToString(bytes32 x) private pure returns (string memory) {
         bytes memory bytesString = new bytes(32);
         uint256 charCount = 0;

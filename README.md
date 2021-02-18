@@ -1,6 +1,4 @@
-# Pancake Swap Lib
-
-
+# Easybake Swap Lib
 Solidity libraries that are shared across Uniswap contracts. These libraries are focused on safety and gas efficiency.
 
 ## Install
@@ -18,5 +16,5 @@ Install this in another project via `yarn add @uniswap/lib`
 Then import the contracts via:
 
 ```solidity
-import "@pancakeswap/pancake-swap-lib/contracts/access/Ownable.sol"; 
+import "@easybakeswap/easybake-swap-lib/contracts/access/Ownable.sol"; 
 ```
