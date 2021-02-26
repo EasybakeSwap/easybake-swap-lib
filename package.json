@@ -1,8 +1,8 @@
 {
   "name": "contracts",
   "version": "0.0.4",
-  "author": "Chef Eco",
-  "description": "Easybake Swap Lib",
+  "author": "Chef Buns",
+  "description": "EasyBake Swap Lib",
   "files": [
     "contracts",
     "!contracts/test"
