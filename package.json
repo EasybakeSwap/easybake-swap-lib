@@ -2,7 +2,7 @@
   "name": "easybake-swap-lib",
   "version": "0.1.0",
   "author": "Chef Buns",
-  "description": "EasyBake Swap Library",
+  "description": "EasyBake Swap Lib",
   "files": [
     "contracts",
     "!contracts/test"
