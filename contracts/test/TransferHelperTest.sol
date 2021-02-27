@@ -37,7 +37,7 @@ contract TransferHelperTest {
 }
 
 // can revert on failure and returns true if successful
-contract TransferHelperTestFakeBEP20Compliant {
+contract TransferHelperTestFakeERC20Compliant {
     bool public success;
     bool public shouldRevert;
 
@@ -67,7 +67,7 @@ contract TransferHelperTestFakeBEP20Compliant {
 }
 
 // only reverts on failure, no return value
-contract TransferHelperTestFakeBEP20Noncompliant {
+contract TransferHelperTestFakeERC20Noncompliant {
     bool public shouldRevert;
 
     function setup(bool shouldRevert_) public {

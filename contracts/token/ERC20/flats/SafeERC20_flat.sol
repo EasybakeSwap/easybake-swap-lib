@@ -1,7 +1,5 @@
-
-// File: browser/Address.sol
-
 // SPDX-License-Identifier: MIT
+// File: browser/Address.sol
 
 pragma solidity >=0.6.2 <0.8.0;
 
@@ -193,8 +191,6 @@ library Address {
 
 // File: browser/SafeMath.sol
 
-// SPDX-License-Identifier: MIT
-
 pragma solidity >=0.4.0;
 
 /**
@@ -385,8 +381,6 @@ library SafeMath {
 
 // File: browser/IERC20.sol
 
-// SPDX-License-Identifier: GPL-3.0-or-later
-
 pragma solidity >=0.4.0 <0.8.0;
 
 interface IERC20 {
@@ -411,7 +405,7 @@ interface IERC20 {
     function name() external view returns (string memory);
 
     /**
-     * @dev Returns the bep token owner.
+     * @dev Returns the erc token owner.
      */
     function getOwner() external view returns (address);
 
@@ -485,12 +479,7 @@ interface IERC20 {
 }
 
 // File: browser/SafeERC20.sol
-
-// SPDX-License-Identifier: MIT
-
-pragma solidity ^0.6.12;
-
-
+pragma solidity >=0.6.10 <0.8.0;
 
 
 /**

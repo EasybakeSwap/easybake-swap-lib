@@ -1,4 +1,4 @@
-# Easybake Swap Lib
+# EasyBake Swap Lib
 Solidity libraries that are shared across Uniswap contracts. These libraries are focused on safety and gas efficiency.
 
 ## Install

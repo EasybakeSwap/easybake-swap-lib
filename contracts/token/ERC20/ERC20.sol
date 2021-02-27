@@ -62,7 +62,7 @@ contract ERC20 is Context, IERC20, Ownable {
     }
 
     /**
-     * @dev Returns the bep token owner.
+     * @dev Returns the erc token owner.
      */
     function getOwner() external override view returns (address) {
         return owner();

@@ -3,10 +3,10 @@ import {Contract, constants} from 'ethers'
 import {formatBytes32String} from '@ethersproject/strings'
 import {solidity, MockProvider, deployContract} from 'ethereum-waffle'
 
-import SafeBEP20NamerTest from '../build/SafeBEP20NamerTest.json'
-import FakeCompliantBEP20 from '../build/NamerTestFakeCompliantBEP20.json'
-import FakeNoncompliantBEP20 from '../build/NamerTestFakeNoncompliantBEP20.json'
-import FakeOptionalBEP20 from '../build/NamerTestFakeOptionalBEP20.json'
+import SafeERC20NamerTest from '../build/SafeERC20NamerTest.json'
+import FakeCompliantERC20 from '../build/NamerTestFakeCompliantERC20.json'
+import FakeNoncompliantERC20 from '../build/NamerTestFakeNoncompliantERC20.json'
+import FakeOptionalERC20 from '../build/NamerTestFakeOptionalERC20.json'
 
 chai.use(solidity)
 
@@ -18,7 +18,7 @@ const overrides = {
 const fullBytes32Name = 'NAME'.repeat(8).substr(0, 31)
 const fullBytes32Symbol = 'SYMB'.repeat(8).substr(0, 31)
 
-describe('SafeBEP20Namer', () => {
+describe('SafeERC20Namer', () => {
   const provider = new MockProvider({
     ganacheOptions: {
       hardfork: 'istanbul',
@@ -29,25 +29,25 @@ describe('SafeBEP20Namer', () => {
   const [wallet] = provider.getWallets()
 
   let safeNamer: Contract
-  before('deploy SafeBEP20NamerTest', async () => {
-    safeNamer = await deployContract(wallet, SafeBEP20NamerTest, [], overrides)
+  before('deploy SafeERC20NamerTest', async () => {
+    safeNamer = await deployContract(wallet, SafeERC20NamerTest, [], overrides)
   })
 
   function deployCompliant({name, symbol}: {name: string; symbol: string}): Promise<Contract> {
-    return deployContract(wallet, FakeCompliantBEP20, [name, symbol], overrides)
+    return deployContract(wallet, FakeCompliantERC20, [name, symbol], overrides)
   }
 
   function deployNoncompliant({name, symbol}: {name: string; symbol: string}): Promise<Contract> {
     return deployContract(
       wallet,
-      FakeNoncompliantBEP20,
+      FakeNoncompliantERC20,
       [formatBytes32String(name), formatBytes32String(symbol)],
       overrides
     )
   }
 
   function deployOptional(): Promise<Contract> {
-    return deployContract(wallet, FakeOptionalBEP20, [], overrides)
+    return deployContract(wallet, FakeOptionalERC20, [], overrides)
   }
 
   async function getName(tokenAddress: string): Promise<string> {

@@ -4,8 +4,8 @@ import {solidity, MockProvider, deployContract} from 'ethereum-waffle'
 
 import TransferHelperTest from '../build/TransferHelperTest.json'
 import FakeFallback from '../build/TransferHelperTestFakeFallback.json'
-import FakeBEP20Noncompliant from '../build/TransferHelperTestFakeBEP20Noncompliant.json'
-import FakeBEP20Compliant from '../build/TransferHelperTestFakeBEP20Compliant.json'
+import FakeERC20Noncompliant from '../build/TransferHelperTestFakeERC20Noncompliant.json'
+import FakeERC20Compliant from '../build/TransferHelperTestFakeERC20Compliant.json'
 
 chai.use(solidity)
 
@@ -30,8 +30,8 @@ describe('TransferHelper', () => {
   before(async () => {
     transferHelper = await deployContract(wallet, TransferHelperTest, [], overrides)
     fakeFallback = await deployContract(wallet, FakeFallback, [], overrides)
-    fakeNoncompliant = await deployContract(wallet, FakeBEP20Noncompliant, [], overrides)
-    fakeCompliant = await deployContract(wallet, FakeBEP20Compliant, [], overrides)
+    fakeNoncompliant = await deployContract(wallet, FakeERC20Noncompliant, [], overrides)
+    fakeCompliant = await deployContract(wallet, FakeERC20Compliant, [], overrides)
   })
 
   // sets up the fixtures for each token situation that should be tested
