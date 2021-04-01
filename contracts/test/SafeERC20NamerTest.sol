@@ -2,15 +2,15 @@
 
 pragma solidity >=0.5.0;
 
-import '../utils/SafeERC20Namer.sol';
+import '../libraries/SafeERC20Namer.sol';
 
 // used for testing the logic of token naming
 contract SafeERC20NamerTest {
-    function tokenSymbol(address token) public view returns (string memory) {
+    function tokenSymbol(address token) external view returns (string memory) {
         return SafeERC20Namer.tokenSymbol(token);
     }
 
-    function tokenName(address token) public view returns (string memory) {
+    function tokenName(address token) external view returns (string memory) {
         return SafeERC20Namer.tokenName(token);
     }
 }

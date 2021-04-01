@@ -61,13 +61,13 @@ describe('TransferHelper', () => {
   describe('#safeApprove', () => {
     harness({
       sendTx: (tokenAddress) => transferHelper.safeApprove(tokenAddress, constants.AddressZero, constants.MaxUint256),
-      expectedError: 'TransferHelper: APPROVE_FAILED',
+      expectedError: 'TransferHelper::safeApprove: approve failed',
     })
   })
   describe('#safeTransfer', () => {
     harness({
       sendTx: (tokenAddress) => transferHelper.safeTransfer(tokenAddress, constants.AddressZero, constants.MaxUint256),
-      expectedError: 'TransferHelper: TRANSFER_FAILED',
+      expectedError: 'TransferHelper::safeTransfer: transfer failed',
     })
   })
   describe('#safeTransferFrom', () => {
@@ -79,19 +79,19 @@ describe('TransferHelper', () => {
           constants.AddressZero,
           constants.MaxUint256
         ),
-      expectedError: 'TransferHelper: TRANSFER_FROM_FAILED',
+      expectedError: 'TransferHelper::transferFrom: transferFrom failed',
     })
   })
 
-  describe('#safeTransferBNB', () => {
+  describe('#safeTransferETH', () => {
     it('succeeds call not reverted', async () => {
       await fakeFallback.setup(false)
-      await transferHelper.safeTransferBNB(fakeFallback.address, 0)
+      await transferHelper.safeTransferETH(fakeFallback.address, 0)
     })
     it('fails if call reverts', async () => {
       await fakeFallback.setup(true)
-      await expect(transferHelper.safeTransferBNB(fakeFallback.address, 0)).to.be.revertedWith(
-        'TransferHelper: BNB_TRANSFER_FAILED'
+      await expect(transferHelper.safeTransferETH(fakeFallback.address, 0)).to.be.revertedWith(
+        'TransferHelper::safeTransferETH: ETH transfer failed'
       )
     })
   })

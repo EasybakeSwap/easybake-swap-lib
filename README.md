@@ -1,5 +1,5 @@
-# EasyBake Swap Lib
-Solidity libraries that are shared across Uniswap contracts. These libraries are focused on safety and gas efficiency.
+# EasyBake Swap Library
+Solidity libraries that are shared across EasyBake swap contracts. These libraries are focused on safety and gas efficiency.
 
 ## Install
 
@@ -11,7 +11,7 @@ Run `yarn test` to execute the test suite.
 
 ## Usage
 
-Install this in another project via `yarn add @uniswap/lib` 
+Install this in another project via `yarn add easybake-swap-lib` 
 
 Then import the contracts via:
 

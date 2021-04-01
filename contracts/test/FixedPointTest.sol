@@ -3,7 +3,7 @@
 pragma solidity >=0.5.0;
 pragma experimental ABIEncoderV2;
 
-import '../utils/FixedPoint.sol';
+import '../libraries/FixedPoint.sol';
 
 contract FixedPointTest {
     function encode(uint112 x) external pure returns (FixedPoint.uq112x112 memory) {
@@ -14,21 +14,6 @@ contract FixedPointTest {
         return FixedPoint.encode144(x);
     }
 
-    // divide a UQ112x112 by a uint112, returning a UQ112x112
-    function div(FixedPoint.uq112x112 calldata self, uint112 y) external pure returns (FixedPoint.uq112x112 memory) {
-        return FixedPoint.div(self, y);
-    }
-
-    function fraction(uint112 numerator, uint112 denominator) external pure returns (FixedPoint.uq112x112 memory) {
-        return FixedPoint.fraction(numerator, denominator);
-    }
-
-    // multiply a UQ112x112 by a uint, returning a UQ144x112
-    function mul(FixedPoint.uq112x112 calldata self, uint256 y) external pure returns (FixedPoint.uq144x112 memory) {
-        return FixedPoint.mul(self, y);
-    }
-
-    // decode a UQ112x112 in a uint container into a uint by truncating after the radix point
     function decode(FixedPoint.uq112x112 calldata self) external pure returns (uint112) {
         return FixedPoint.decode(self);
     }
@@ -37,11 +22,71 @@ contract FixedPointTest {
         return FixedPoint.decode144(self);
     }
 
+    function mul(FixedPoint.uq112x112 calldata self, uint256 y) external pure returns (FixedPoint.uq144x112 memory) {
+        return FixedPoint.mul(self, y);
+    }
+
+    function muli(FixedPoint.uq112x112 calldata self, int256 y) external pure returns (int256) {
+        return FixedPoint.muli(self, y);
+    }
+
+    function muluq(FixedPoint.uq112x112 calldata self, FixedPoint.uq112x112 calldata other)
+        external
+        pure
+        returns (FixedPoint.uq112x112 memory)
+    {
+        return FixedPoint.muluq(self, other);
+    }
+
+    function getGasCostOfMuluq(FixedPoint.uq112x112 calldata self, FixedPoint.uq112x112 calldata other)
+        external
+        view
+        returns (uint256)
+    {
+        uint256 gasBefore = gasleft();
+        FixedPoint.muluq(self, other);
+        return gasBefore - gasleft();
+    }
+
+    function divuq(FixedPoint.uq112x112 calldata self, FixedPoint.uq112x112 calldata other)
+        external
+        pure
+        returns (FixedPoint.uq112x112 memory)
+    {
+        return FixedPoint.divuq(self, other);
+    }
+
+    function getGasCostOfDivuq(FixedPoint.uq112x112 calldata self, FixedPoint.uq112x112 calldata other)
+        external
+        view
+        returns (uint256)
+    {
+        uint256 gasBefore = gasleft();
+        FixedPoint.divuq(self, other);
+        return gasBefore - gasleft();
+    }
+
+    function fraction(uint256 numerator, uint256 denominator) external pure returns (FixedPoint.uq112x112 memory) {
+        return FixedPoint.fraction(numerator, denominator);
+    }
+
+    function getGasCostOfFraction(uint256 numerator, uint256 denominator) external view returns (uint256) {
+        uint256 gasBefore = gasleft();
+        FixedPoint.fraction(numerator, denominator);
+        return gasBefore - gasleft();
+    }
+
     function reciprocal(FixedPoint.uq112x112 calldata self) external pure returns (FixedPoint.uq112x112 memory) {
         return FixedPoint.reciprocal(self);
     }
 
     function sqrt(FixedPoint.uq112x112 calldata self) external pure returns (FixedPoint.uq112x112 memory) {
         return FixedPoint.sqrt(self);
+    }
+
+    function getGasCostOfSqrt(FixedPoint.uq112x112 calldata self) external view returns (uint256) {
+        uint256 gasBefore = gasleft();
+        FixedPoint.sqrt(self);
+        return gasBefore - gasleft();
     }
 }

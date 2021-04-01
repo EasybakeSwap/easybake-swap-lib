@@ -2,7 +2,7 @@
 
 pragma solidity >=0.5.0;
 
-import '../utils/AddressStringUtil.sol';
+import '../libraries/AddressStringUtil.sol';
 
 contract AddressStringUtilTest {
     function toAsciiString(address addr, uint256 len) external pure returns (string memory) {
