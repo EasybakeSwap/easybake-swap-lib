@@ -41,7 +41,7 @@ describe('BitMath', () => {
       )
       expect(results).to.deep.eq([...Array(255)].map((_, i) => i))
     })
-    it('uint256(-1)', async () => {
+    it('type(uint256).max', async () => {
       expect(await bitMath.mostSignificantBit(BigNumber.from(2).pow(256).sub(1))).to.eq(255)
     })
     it('gas cost of smaller number', async () => {
@@ -71,7 +71,7 @@ describe('BitMath', () => {
       )
       expect(results).to.deep.eq([...Array(255)].map((_, i) => i))
     })
-    it('uint256(-1)', async () => {
+    it('type(uint256).max', async () => {
       expect(await bitMath.leastSignificantBit(BigNumber.from(2).pow(256).sub(1))).to.eq(0)
     })
     it('gas cost of smaller number', async () => {

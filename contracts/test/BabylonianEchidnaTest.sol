@@ -15,6 +15,6 @@ contract BabylonianEchidnaTest {
     }
 
     function checkMaxForIndex(uint8 index) external pure {
-        checkSqrt(index == 255 ? uint256(-1) : uint256(2)**(index + 1));
+        checkSqrt(index == 255 ? type(uint256).max : uint256(2)**(index + 1));
     }
 }

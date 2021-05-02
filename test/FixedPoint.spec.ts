@@ -40,7 +40,7 @@ describe('FixedPoint', () => {
     it('shifts left by 112', async () => {
       expect((await fixedPoint.encode144('0x01'))[0]).to.eq(Q112.toHexString())
     })
-    it('will not take >uint144(-1)', async () => {
+    it('will not take >type(uint144).max', async () => {
       expect(() => fixedPoint.encode144(BigNumber.from(2).pow(145).sub(1))).to.throw
     })
   })
@@ -59,7 +59,7 @@ describe('FixedPoint', () => {
       expect(await fixedPoint.decode([BigNumber.from(3).mul(Q112)])).to.eq(BigNumber.from(3))
     })
 
-    it('will not take >uint256(-1)', async () => {
+    it('will not take >type(uint256).max', async () => {
       expect(() => fixedPoint.decode([BigNumber.from(2).pow(257).sub(1)])).to.throw
     })
   })
@@ -252,7 +252,7 @@ describe('FixedPoint', () => {
 
     it('boundary of full precision', async () => {
       const maxNumeratorFullPrecision = BigNumber.from(2).pow(144).sub(1)
-      const minDenominatorFullPrecision = BigNumber.from('4294967296') // ceiling(uint144(-1) * Q112 / uint224(-1))
+      const minDenominatorFullPrecision = BigNumber.from('4294967296') // ceiling(type(uint144).max * Q112 / uint224(-1))
 
       expect((await fixedPoint.divuq([maxNumeratorFullPrecision], [minDenominatorFullPrecision]))[0]).to.eq(
         BigNumber.from('26959946667150639794667015087019630673637143213614752866474435543040')
